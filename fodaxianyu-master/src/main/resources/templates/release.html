@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>注册</title>
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/common.css">
+        <link rel="stylesheet" href="../css/register.css">
+		<!--导入jquery-->
+		<script src="../js/jquery-3.3.1.js"></script>
+    </head>
+	<body>
+	<div class="shortcut">
+		<!-- 未登录状态  -->
+		<div class="login_out">
+			<a href="login.html">消息中心</a>
+			<a href="register.html">个人中心</a>
+		</div>
+		<!-- 登录状态  -->
+		<div class="login">
+
+			<span id="span"></span>
+			<a href="myfavorite.html" class="collection">我的收藏</a>
+			<a href="javascript:location.href='user/exit'">退出</a>
+		</div>
+	</div>
+	<nav class="navbar navbar-default company" style="height: 150px">
+		<div class="container-fluid" style="float: left">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<img alt="Brand" src="../images/logolast.png" style="height: 130px">
+					</a>
+				</div>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float: left">
+				<ul class="nav navbar-nav">
+					<!--<li class="active" style="float: left"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#" style="font-size: 20px">首页</a></li>
+					<li><a href="#" style="font-size: 20px">收藏夹</a></li>
+					<li><a href="#" style="font-size: 20px">商品分类</a></li>
+					<li><a href="#" style="font-size: 20px">卖家中心</a></li>
+					<li><a href="#" style="font-size: 20px">联系客服</a></li>
+					<li><a href="#" style="font-size: 20px">网站导航</a></li>
+					<!--<li class="dropdown">-->
+					<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
+					<!--<ul class="dropdown-menu">-->
+					<!--<li><a href="#">Action</a></li>-->
+					<!--<li><a href="#">Another action</a></li>-->
+					<!--<li><a href="#">Something else here</a></li>-->
+					<!--<li role="separator" class="divider"></li>-->
+					<!--<li><a href="#">Separated link</a></li>-->
+					<!--<li role="separator" class="divider"></li>-->
+					<!--<li><a href="#">One more separated link</a></li>-->
+					<!--</ul>-->
+					<!--</li>-->
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+    	<div class="rg_layout" style="margin-top: 30px;background: url(https://img.alicdn.com/tfs/TB1vhbbjfb2gK0jSZK9XXaEgFXa-1190-600.jpg);height: 100%">
+    		<div class="rg_form clearfix" style="height: 100%">
+    			<div class="rg_form_left">
+    				<!--<p>新用户注册</p>-->
+    				<!--<p>USER REGISTER</p>-->
+    			</div>
+    			<div class="rg_form_center">
+					<div id="errorMsg" style="color: red" align="center" th:text="${errorMsg}"></div>
+					<!--注册表单-->
+    				<form id="registerForm" action="/good/saveGood"  method="post" enctype="multipart/form-data">
+						<input type="hidden" name="action" value="register">
+    					<table style="margin-top: 25px;">
+    						<tr >
+    							<td class="td_left" style="white-space: nowrap">
+    								<label for="goodname">商品名称</label>
+    							</td>
+    							<td class="td_right">
+
+    								<input type="text" id="goodname" name="goodname" placeholder="请输入商品名称" style="margin-left: 20px">
+								</td>
+								<td width="300px"></td>
+    						</tr>
+
+    						<tr>
+    							<td class="td_left" style="white-space: nowrap">
+    								<label>所属分类</label>
+    							</td>
+    							<td class="td_right">
+									<div style="margin-left: 53px">
+										<select name="catelogId" style="border-radius: 3px;font-size: 20px">
+											<option value="1" name="1">服装</option>
+											<option value="2">食品</option>
+											<option value="3">家电</option>
+											<option value="4">旧书</option>
+											<option value="5">电子产品</option>
+											<option value="7">生活用品</option>
+
+										</select>
+									</div>
+
+
+    							</td>
+								<td><div id="emaildiv"></div></td>
+    						</tr>
+							<tr>
+								<td class="td_left" style="white-space: nowrap">
+									<label for="password">商品价格</label>
+								</td>
+								<td class="td_right">
+									<input type="text" id="password" name="price" placeholder="请输入商品价格">
+								</td>
+								<td><div id="passworddiv"></div></td>
+							</tr>
+
+
+
+    						<tr>
+    							<td class="td_left" style="white-space: nowrap">
+    								<label>商品相册</label>
+    							</td>
+									<td class="td_right" >
+										<div style="margin-left: 36px">
+											<input name="pic" type="file" data-ref="imgUrl">
+											<input type="hidden" name="imgUrl" value="">
+										</div>
+
+									</td>
+
+								<td><div id="birthdaydiv"></div></td>
+    						</tr>
+    						<tr>
+    							<td class="td_left" style="white-space: nowrap">
+    								<label >商品描述</label>
+    							</td>
+    							<td class="td_right check">
+    								<textarea name="description"  cols="40" rows="3"></textarea>
+    							</td>
+								<td><div id="checkdiv"></div></td>
+    						</tr>
+							<tr>
+								<td></td>
+								<td>
+									<div style="margin-left: 36px;font-size: 30px">
+
+										<input type="submit" value="发布" style="font-size: 20px;width: 100px" class="btn btn-success">
+									</div>
+								</td>
+							</tr>
+    					</table>
+    				</form>
+    			</div>
+    			<div class="rg_form_right">
+    				<!--<p>-->
+    					<!--已有账号？-->
+
+    					<!--<a href="#">立即登录</a>-->
+    				<!--</p>-->
+    			</div>
+    		</div>
+    	</div>
+
+	<div class="why_select" style="background-color: #0f0f0f">
+		<dl>
+			<dt class="fl">
+				<img src="/images/1.png" alt="">
+			</dt>
+		</dl>
+		<dl >
+			<dt class="fl" style="margin-left: 35px">
+				<img src="/images/2.png" alt="">
+			</dt>
+		</dl>
+		<dl >
+			<dt class="fl" style="margin-left: 35px">
+				<img src="/images/3.png" alt="">
+			</dt>
+		</dl>
+		<dl >
+			<dt class="fl" style="margin-left: 35px">
+				<img src="/images/4.png" alt="">
+			</dt>
+		</dl>
+	</div>
+	<div class="company">
+		<p>佛山科学计数学院 版权所有Copyright 2019-2020, All Rights Reserved 广东16007882</p>
+	</div>
+
+    </body>
+</html>

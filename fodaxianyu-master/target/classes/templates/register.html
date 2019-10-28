@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>注册</title>
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/common.css">
+        <link rel="stylesheet" href="../css/register.css">
+		<!--导入jquery-->
+		<script src="../js/jquery-3.3.1.js"></script>
+    </head>
+	<script>
+		function checkusername() {
+			var username = $("#username").val();
+			var reg_username=/^\w{6,12}$/;
+			var flag =reg_username.test(username);
+			if(flag){
+			    $("#username").css("border","");
+			}else{
+                $("#username").css("border","1px solid red");
+			}
+			return flag;
+        }
+        function checkpassword() {
+
+            var password = $("#password").val();
+            var reg_password=/^\w{6,12}$/;
+            var flag =reg_password.test(password);
+            if(flag){
+                $("#password").css("border","");
+            }else{
+                $("#password").css("border","1px solid red");
+            }
+            return flag;
+        }
+        function checkemail() {
+			var email = $("#email").val();
+			//2832291250@qq.com
+			var reg_email=/^\w+@\w+\.\w+$/;
+			var flag = reg_email.test(email);
+            if(flag){
+                $("#email").css("border","");
+            }else{
+                $("#email").css("border","1px solid red");
+            }
+            return flag;
+        }
+        function checkname() {
+
+			var name = $("#name").val();
+            var reg_name=/[\u4E00-\u9FA5\uF900-\uFA2D]/;
+			var flag = reg_name.test(name);
+            if(flag){
+                $("#name").css("border","");
+            }else{
+                $("#name").css("border","1px solid red");
+            }
+            return flag;
+        }
+        function checktelephone() {
+			var telephone = $("#telephone").val();
+			var reg_telephone=/^\d{6,12}$/;
+			var flag = reg_telephone.test(telephone);
+			if(flag){
+                $("#telephone").css("border","");
+			}else{
+                $("#telephone").css("border","1px solid red");
+			}
+			return flag;
+        }
+        function checkbirthday() {
+			var birthday = $("#birthday").val();
+			//2019-08-13
+			var reg_birthday=/^\d{4}\-\d{2}\-\d{2}$/;
+			var flag = reg_birthday.test(birthday);
+            if(flag){
+                $("#telephone").css("border","");
+            }else{
+                $("#telephone").css("border","1px solid red");
+            }
+            return flag;
+        }
+        function checkcode() {
+			var checkcode = $("#check").val();
+			var reg_checkcode=/^\w{4}$/;
+			var flag=reg_checkcode.test(checkcode);
+            if(flag){
+                $("#check").css("border","");
+            }else{
+                $("#check").css("border","1px solid red");
+            }
+            return flag;
+        }
+        $(function () {
+			$("#button").click(function () {
+			    if(checkusername () && checkpassword() && checkemail() && checkname() && checktelephone() &&checkbirthday() &&checkcode()){
+			        alert("检测通过")
+//			        $.get("user/regist",$(this).serialize(),function (data) {
+//						var flag = data.flag;
+//						if(flag){
+//						    //成功
+//							location.href="register_ok.html"
+//						}else{
+//						    //失败
+//							$("#errorMsg").html(data.errorMsg);
+//						}
+//                    })
+				}else{
+			        alert("检测不通过，请重新输入")
+				}
+            })
+            $("#registerForm").submit(function () {
+                $.get("/user/register", $(this).serialize(), function (data) {
+                    //alert("aaaaaaa")
+					//$("#errorMsg").html(data.errorMsg)
+						var flag = data.flag;
+						if(flag){
+						    //成功
+							location.href="register_ok.html"
+						}else{
+						    //失败
+							$("#errorMsg").html(data.errorMsg);
+						}
+                })
+				return false;
+            })
+			$("#username").blur(checkusername);
+            $("#password").blur(checkpassword);
+            $("#email").blur(checkemail);
+            $("#name").blur(checkname);
+            $("#telephone").blur(checktelephone);
+            $("#check").blur(checkcode);
+        })
+
+	</script>
+	<body>
+	<div style="float: left;margin-left: 200px;margin-top: 50px"><img src="/images/logo.jpg" width="250px"></div>
+	<div style="float: left;font-size: 25px;margin-top: 70px;margin-left: 50px">欢迎注册</div>
+    	<div class="rg_layout" style="margin-top: 30px;background: url(https://img.alicdn.com/tfs/TB1vhbbjfb2gK0jSZK9XXaEgFXa-1190-600.jpg)">
+    		<div class="rg_form clearfix">
+    			<div class="rg_form_left">
+    				<p>新用户注册</p>
+    				<p>USER REGISTER</p>
+    			</div>
+    			<div class="rg_form_center">
+					<div id="errorMsg" style="color: red" align="center" th:text="${errorMsg}"></div>
+					<!--注册表单-->
+    				<form id="registerForm">
+						<input type="hidden" name="action" value="register">
+    					<table style="margin-top: 25px;">
+    						<tr >
+    							<td class="td_left" style="white-space: nowrap">
+    								<label for="username">用户名</label>
+    							</td>
+    							<td class="td_right">
+    								<input type="text" id="username" name="username" placeholder="请输入账号" style="margin-left: 20px">
+    							</td>
+								<td width="300px"></td>
+    						</tr>
+    						<tr>
+    							<td class="td_left" style="white-space: nowrap">
+    								<label for="password">密码</label>
+    							</td>
+    							<td class="td_right">
+    								<input type="text" id="password" name="password" placeholder="请输入密码">
+    							</td>
+								<td><div id="passworddiv"></div></td>
+    						</tr>
+    						<tr>
+    							<td class="td_left" style="white-space: nowrap">
+    								<label for="email">Email</label>
+    							</td>
+    							<td class="td_right">
+    								<input type="text" id="email" name="email" placeholder="请输入Email">
+    							</td>
+								<td><div id="emaildiv"></div></td>
+    						</tr>
+    						<tr>
+    							<td class="td_left" style="white-space: nowrap">
+    								<label for="name">姓名</label>
+    							</td>
+    							<td class="td_right">
+    								<input type="text" id="name" name="name" placeholder="请输入真实姓名">
+    							</td>
+								<td><div id="namediv"></div></td>
+    						</tr>
+    						<tr>
+    							<td class="td_left" style="white-space: nowrap">
+    								<label for="telephone">手机号</label>
+    							</td>
+    							<td class="td_right">
+    								<input type="text" id="telephone" name="telephone" placeholder="请输入您的手机号">
+    							</td>
+								<td><div id="telephonediv"></div></td>
+    						</tr>
+    						<tr>
+    							<td class="td_left" style="white-space: nowrap">
+    								<label for="sex">性别</label>
+    							</td>
+    							<td class="td_right gender" style="white-space: nowrap">
+    								<input type="radio" id="sex" name="sex" value="男" checked> 男
+    								<input type="radio" name="sex" value="女"> 女
+    							</td>
+								<td><div id="sexdiv"></div></td>
+    						</tr>
+    						<tr>
+    							<td class="td_left" style="white-space: nowrap">
+    								<label for="birthday">出生日期</label>
+    							</td>
+    							<td class="td_right" >
+    								<input type="date" id="birthday" name="birthday" placeholder="年/月/日">
+    							</td>
+								<td><div id="birthdaydiv"></div></td>
+    						</tr>
+    						<tr>
+    							<td class="td_left" style="white-space: nowrap">
+    								<label for="check">验证码</label>
+    							</td>
+    							<td class="td_right check">
+    								<input type="text" id="check" name="check" class="check">
+    								<img src="/checkCode/checkCode" height="32px" alt="" onclick="changeCheckCode(this)">
+									<script type="text/javascript">
+										//图片点击事件
+										function changeCheckCode(img) {
+											img.src="/checkCode/checkCode?"+new Date().getTime();
+                                        }
+									</script>
+    							</td>
+								<td><div id="checkdiv"></div></td>
+    						</tr>
+    						<tr>
+    							<td class="td_left"> 
+    							</td>
+    							<td class="td_right check">
+									<button type="button" class="btn btn-primary" style="width: 100px" id="button">检测</button>
+    								<input type="submit" class="btn btn-success" value="注册" style="width: 100px">
+									<span id="msg" style="color: red;"></span>
+    							</td>
+    						</tr>
+    					</table>
+    				</form>
+    			</div>
+    			<div class="rg_form_right">
+    				<p>
+    					已有账号？
+
+    					<a href="#">立即登录</a>
+    				</p>
+    			</div>
+    		</div>
+    	</div>
+
+	<div class="why_select" style="background-color: #0f0f0f">
+		<dl>
+			<dt class="fl">
+				<img src="/images/1.png" alt="">
+			</dt>
+		</dl>
+		<dl >
+			<dt class="fl" style="margin-left: 35px">
+				<img src="/images/2.png" alt="">
+			</dt>
+		</dl>
+		<dl >
+			<dt class="fl" style="margin-left: 35px">
+				<img src="/images/3.png" alt="">
+			</dt>
+		</dl>
+		<dl >
+			<dt class="fl" style="margin-left: 35px">
+				<img src="/images/4.png" alt="">
+			</dt>
+		</dl>
+	</div>
+	<div class="company">
+		<p>佛山科学计数学院 版权所有Copyright 2019-2020, All Rights Reserved 广东16007882</p>
+	</div>
+
+    </body>
+</html>

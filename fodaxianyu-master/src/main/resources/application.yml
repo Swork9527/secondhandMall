@@ -1,0 +1,19 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+  datasource:
+    url: jdbc:mysql:///campus_second-hand_mall?serverTimezone=UTC
+    username: root
+    password: qwer1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:/mapping/*.xml
+  type-aliases-package: com.hzf.entity
+server:
+  port: 9090

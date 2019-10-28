@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzf.repository.GoodPictureMapper" >
+    <select id="findAllGoodPicture" resultType="GoodPicture">
+      SELECT DISTINCT good.goodId,catelog_id AS catelogid,description,goodName,price,status,userId,pic.goodId AS picturegoodid,pictureId,pictureUrl
+      FROM good,(SELECT *
+									FROM	pictures
+									WHERE pictureId
+									in (SELECT MIN(pictureId)
+									FROM pictures pic
+									WHERE pic.goodId=pictures.goodId)
+									ORDER BY pictureId)pic
+      WHERE good.goodId=pic.goodId AND `status`='0'
+    </select>
+</mapper>

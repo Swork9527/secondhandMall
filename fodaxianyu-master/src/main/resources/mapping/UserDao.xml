@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzf.repository.UserDao">
+    <insert id="register" parameterType="User">
+        insert into tab_user (username,password,name,birthday,sex,telephone,email,status,code) VALUES (#{username},#{password},#{name},#{birthday},#{sex},#{telephone},#{email},#{status},#{code})
+    </insert>
+    <select id="findUsername" parameterType="String" resultType="User">
+        select * from tab_user where username=#{username}
+    </select>
+    <select id="findCode" parameterType="String" resultType="User">
+        select * from tab_user where code=#{code}
+    </select>
+    <update id="active" parameterType="String">
+        update tab_user set status=#{param1} where code=#{param2}
+    </update>
+    <select id="login" parameterType="User" resultType="User">
+        select * from tab_user where username=#{username} and password=#{password}
+    </select>
+    <select id="findUserById" parameterType="Integer" resultType="User">
+        select * from tab_user where uid=#{uid}
+    </select>
+</mapper>

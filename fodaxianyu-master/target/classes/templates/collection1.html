@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>商品详情</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/route-detail.css">
+    <script src="/js/getParameter.js"></script>
+</head>
+<script>
+    $(function () {
+        $.post("/user/findname",{},function (data) {
+            if(data.flag){
+                var msg="欢迎回来     "+data.data.name;
+                $("#span").html(msg);
+            }
+        })
+    })
+</script>
+
+<body>
+<div class="shortcut">
+    <!-- 未登录状态  -->
+    <div class="login_out">
+        <a href="login.html">消息中心</a>
+        <a href="register.html">个人中心</a>
+    </div>
+    <!-- 登录状态  -->
+    <div class="login">
+
+        <span id="span"></span>
+        <a href="myfavorite.html" class="collection">我的收藏</a>
+        <a href="javascript:location.href='user/exit'">退出</a>
+    </div>
+</div>
+<nav class="navbar navbar-default company" style="height: 150px">
+    <div class="container-fluid" style="float: left">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="../images/logolast.png" style="height: 130px">
+                </a>
+            </div>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float: left">
+            <ul class="nav navbar-nav">
+                <!--<li class="active" style="float: left"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#" style="font-size: 20px">首页</a></li>
+                <li><a href="#" style="font-size: 20px">收藏夹</a></li>
+                <li><a href="#" style="font-size: 20px">商品分类</a></li>
+                <li><a href="#" style="font-size: 20px">卖家中心</a></li>
+                <li><a href="#" style="font-size: 20px">联系客服</a></li>
+                <li><a href="#" style="font-size: 20px">网站导航</a></li>
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                        <!--<li><a href="#">Another action</a></li>-->
+                        <!--<li><a href="#">Something else here</a></li>-->
+                        <!--<li role="separator" class="divider"></li>-->
+                        <!--<li><a href="#">Separated link</a></li>-->
+                        <!--<li role="separator" class="divider"></li>-->
+                        <!--<li><a href="#">One more separated link</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<table class="table table-hover">
+    <tr>
+        <td width="100px"><div style="margin-left: 20px"><input type="radio">全选</div></td>
+        <td><div style="margin-left: 80px">商品</div></td>
+        <td><div style="margin-left: 40px">商品信息</div></td>
+        <td><div style="margin-left: 20px">价格</div></td>
+        <td><div style="margin-left: 20px">卖家</div></td>
+        <td><div style="margin-left: 20px">操作</div></td>
+        <!--<td>商品信息</td>-->
+        <!--<td>价格</td>-->
+        <!--<td>卖家</td>-->
+        <!--<td>操作</td>-->
+    </tr>
+    <tr>
+        <td><div style="margin-left: 20px;margin-top: 50px"><input type="radio"></div></td>
+        <td width="200px" height="50px"><img src="../images/jingxuan_2.jpg"></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀</div></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">299.00</div></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">tavasdasdasdsa</div></td>
+        <td width="200px">
+            <div style="margin-left: 20px;margin-top: 30px">
+                <button type="button" class="btn btn-danger">删除</button>
+                <button type="button" class="btn btn-info">联系卖家</button>
+                <button type="button" class="btn btn-success">购买</button>
+            </div>
+
+        </td>
+    </tr>
+    <tr>
+        <td><div style="margin-left: 20px;margin-top: 50px"><input type="radio"></div></td>
+        <td width="200px" height="50px"><img src="../images/jingxuan_2.jpg"></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀</div></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">299.00</div></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">tavasdasdasdsa</div></td>
+        <td width="200px">
+            <div style="margin-left: 20px;margin-top: 30px">
+                <button type="button" class="btn btn-danger">删除</button>
+                <button type="button" class="btn btn-info">联系卖家</button>
+                <button type="button" class="btn btn-success">购买</button>
+            </div>
+
+        </td>
+    </tr>
+    <tr>
+        <td><div style="margin-left: 20px;margin-top: 50px"><input type="radio"></div></td>
+        <td width="200px" height="50px"><img src="../images/jingxuan_2.jpg"></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀</div></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">299.00</div></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">tavasdasdasdsa</div></td>
+        <td width="200px">
+            <div style="margin-left: 20px;margin-top: 30px">
+                <button type="button" class="btn btn-danger">删除</button>
+                <button type="button" class="btn btn-info">联系卖家</button>
+                <button type="button" class="btn btn-success">购买</button>
+            </div>
+
+        </td>
+    </tr>
+    <tr>
+        <td><div style="margin-left: 20px;margin-top: 50px"><input type="radio"></div></td>
+        <td width="200px" height="50px"><img src="../images/jingxuan_2.jpg"></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀飞利浦剃须刀</div></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">299.00</div></td>
+        <td width="200px"><div style="margin-left: 20px;margin-top: 30px">tavasdasdasdsa</div></td>
+        <td width="200px">
+            <div style="margin-left: 20px;margin-top: 30px">
+                <button type="button" class="btn btn-danger">删除</button>
+                <button type="button" class="btn btn-info">联系卖家</button>
+                <button type="button" class="btn btn-success">购买</button>
+            </div>
+
+        </td>
+    </tr>
+
+</table>
+
+    <script src="/js/jquery-3.3.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        load1();
+    });
+    function load1() {
+        $('.little_img').on('mousemove', function() {
+            $('.little_img').removeClass('cur_img');
+            var big_pic = $(this).data('bigpic');
+            $('.big_img').attr('src', big_pic);
+            $(this).addClass('cur_img');
+        });
+        var picindex = 0;
+        var nextindex = 4;
+        $('.down_img').on('click',function(){
+            var num = $('.little_img').length;
+            if((nextindex + 1) <= num){
+                $('.little_img:eq('+picindex+')').hide();
+                $('.little_img:eq('+nextindex+')').show();
+                picindex = picindex + 1;
+                nextindex = nextindex + 1;
+            }
+        });
+        $('.up_img').on('click',function(){
+            var num = $('.little_img').length;
+            if(picindex > 0){
+                $('.little_img:eq('+(nextindex-1)+')').hide();
+                $('.little_img:eq('+(picindex-1)+')').show();
+                picindex = picindex - 1;
+                nextindex = nextindex - 1;
+            }
+        });
+    }
+    function auto_play() {
+        var cur_index = $('.prosum_left dd').find('a.cur_img').index();
+        cur_index = cur_index - 1;
+        var num = $('.little_img').length;
+        var max_index = 3;
+        if ((num - 1) < 3) {
+            max_index = num - 1;
+        }
+        if (cur_index < max_index) {
+            var next_index = cur_index + 1;
+            var big_pic = $('.little_img:eq(' + next_index + ')').data('bigpic');
+            $('.little_img').removeClass('cur_img');
+            $('.little_img:eq(' + next_index + ')').addClass('cur_img');
+            $('.big_img').attr('src', big_pic);
+        } else {
+            var big_pic = $('.little_img:eq(0)').data('bigpic');
+            $('.little_img').removeClass('cur_img');
+            $('.little_img:eq(0)').addClass('cur_img');
+            $('.big_img').attr('src', big_pic);
+        }
+    }
+    $(function () {
+        var rid = getParameter("rid");
+        $.get("route/findOne",{rid:rid},function (route) {
+            $("#rname").html(route.rname);
+            $("#routeIntroduce").html(route.routeIntroduce);
+            $("#price").html("￥"+route.price);
+            $("#sname").html(route.seller.sname);
+            $("#consphone").html(route.seller.consphone);
+            $("#address").html(route.seller.address);
+            $("#num").html(route.count);
+            var imgs=' <a class="up_img up_img_disable"></a>';
+            for(var i = 0; i<route.routeImgList.length;i++){
+                if(i>4){
+                    imgs+=' <a title="" class="little_img" data-bigpic="'+route.routeImgList[i].bigPic+'" style="display:none;">\n' +
+                        '                        <img src="'+route.routeImgList[i].smallPic+'">\n' +
+                        '                    </a>';
+                }else{
+                    imgs+='<a title="" class="little_img" data-bigpic="'+route.routeImgList[i].bigPic+'">\n' +
+                        '<img src="'+route.routeImgList[i].smallPic+'">\n' + '</a>'
+                }
+
+
+            }
+            imgs+='<a class="down_img down_img_disable" style="margin-bottom: 0;"></a>'
+            $("#dd").html(imgs);
+            load1();
+        });
+        $.get("route/isFavorite",{rid:rid},function (flag) {
+
+            if (flag){
+               $("#favorite").addClass("already");
+               $("#favorite").attr("disabled","disabled");
+               $("#favorite").removeAttr("onclick");
+            }else{
+
+            }
+        })
+
+    })
+        function addFavorite() {
+            var rid = getParameter("rid");
+            $.get("user/findname",{},function (user) {
+                if(user){
+                    $.get("route/addFavorite",{rid:rid},function () {
+                        location.reload();
+                    })
+                }else{
+                    alert("你还没有登录，请登录！")
+                    location.href="http://localhost/travel/login.html";
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

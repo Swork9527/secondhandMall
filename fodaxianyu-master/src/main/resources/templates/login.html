@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>黑马旅游网-登录</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <!--导入angularJS文件
+    //<script src="js/angular.min.js"></script>
+    -->
+	<!--导入jquery-->
+	<script src="/js/jquery-3.3.1.js"></script>
+	<!--<script>-->
+		<!--$(function () {-->
+			<!--$("#button").click(function () {-->
+				<!--$.post("user/login",$("#loginForm").serialize(),function (data) {-->
+					<!--if(data.flag){-->
+					    <!--location.href="index.html";-->
+					<!--}else{-->
+					    <!--$("#errorMsg").html(data.errorMsg);-->
+					<!--}-->
+                <!--})-->
+            <!--})-->
+        <!--})-->
+	<!--</script>-->
+<script>
+    function checkusername() {
+        var username = $("#username").val();
+        var reg_username=/^\w{6,12}$/;
+        var flag =reg_username.test(username);
+        if(flag){
+            $("#username").css("border","");
+        }else{
+            $("#username").css("border","1px solid red");
+        }
+        return flag;
+    }
+    function checkpassword() {
+
+        var password = $("#password").val();
+        var reg_password=/^\w{6,12}$/;
+        var flag =reg_password.test(password);
+        if(flag){
+            $("#password").css("border","");
+        }else{
+            $("#password").css("border","1px solid red");
+        }
+        return flag;
+    }
+    function checkcode() {
+        var checkcode = $("#check").val();
+        var reg_checkcode=/^\w{4}$/;
+        var flag=reg_checkcode.test(checkcode);
+        if(flag){
+            $("#check").css("border","");
+        }else{
+            $("#check").css("border","1px solid red");
+        }
+        return flag;
+    }
+    $(function () {
+        $("#button").click(function () {
+            if(checkusername()&&checkpassword()&&checkcode()){
+				    //alert("检测通过")
+					$.post("/user/login",$("#loginForm").serialize(),function (data) {
+	                if(data.flag){
+	                    location.href="index.html";
+	                }else{
+	                    $("#errorMsg").html(data.errorMsg);
+	                }
+					})
+				}else{
+                	$("#errorMsg").html("输入的格式错误错误");
+				}
+//            $.post("/user/login",$("#loginForm").serialize(),function (data) {
+////                if(data.flag){
+////                    location.href="index.html";
+////                }else{
+////                    $("#errorMsg").html(data.errorMsg);
+////                }
+//				if(checkusername()&&checkpassword()&&changeCheckCode()){
+//				    alert("检测通过")
+//				}else{
+//				    alert("检测通过")
+//				}
+//            })
+        })
+        $("#username").blur(checkusername);
+        $("#password").blur(checkpassword);
+        $("#check").blur(checkcode);
+    })
+
+</script>
+<body>
+			<div style="float: left;margin-left: 200px;margin-top: 50px"><img src="../images/logo.jpg" width="250px"></div>
+			<div style="float: left;font-size: 25px;margin-top: 70px;margin-left: 50px">欢迎登录</div>
+    <section id="login_wrap">
+        <div class="fullscreen-bg" style="background: url(https://img.alicdn.com/tfs/TB1vhbbjfb2gK0jSZK9XXaEgFXa-1190-600.jpg);height: 532px;">
+        	
+        </div>
+        <div class="login-box">
+        	<div class="title" style="background-color: white">
+        		<!--<img src="/images/login_logo.png" alt="">-->
+        		<span>欢迎登录</span>
+        	</div>
+        	<div class="login_inner">
+				
+				<!--登录错误提示消息-->
+        		<div id="errorMsg" class="alert alert-danger" style="background-color: white;border: hidden">	</div>
+				<form id="loginForm" action="" method="post" accept-charset="utf-8">
+					<input name="username" type="text" id="username" placeholder="请输入账号" autocomplete="off">
+        			<input name="password" type="text" id="password" placeholder="请输入密码" autocomplete="off">
+        			<div class="verify">
+					<input name="check" type="text" id="check" placeholder="请输入验证码" autocomplete="off">
+					<span><img src="/checkCode/checkCode" alt="" onclick="changeCheckCode(this)"></span>
+					<script type="text/javascript">
+						//图片点击事件
+						function changeCheckCode(img) {
+							img.src="/checkCode/checkCode?"+new Date().getTime();
+						}
+					</script>
+			</div>
+			<div class="submit_btn">
+        				<button type="button" id="button">登录</button>
+        				<div class="auto_login">
+        					<input type="checkbox" name="" class="checkbox">
+        					<span>自动登录</span>
+        				</div>        				
+        			</div>        			       		
+        		</form>
+        		<div class="reg">没有账户？<a href="javascript:;">立即注册</a></div>
+        	</div>
+        </div>
+    </section>
+    <!--引入尾部-->
+<div class="why_select" style="background-color: #0f0f0f">
+	<dl>
+		<dt class="fl">
+			<img src="/images/1.png" alt="">
+		</dt>
+	</dl>
+	<dl >
+		<dt class="fl" style="margin-left: 35px">
+			<img src="/images/2.png" alt="">
+		</dt>
+	</dl>
+	<dl >
+		<dt class="fl" style="margin-left: 35px">
+			<img src="/images/3.png" alt="">
+		</dt>
+	</dl>
+	<dl >
+		<dt class="fl" style="margin-left: 35px">
+			<img src="/images/4.png" alt="">
+		</dt>
+	</dl>
+</div>
+<div class="company">
+	<p>佛山科学计数学院 版权所有Copyright 2019-2020, All Rights Reserved 广东16007882</p>
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!--导入布局js，共享header和footer-->
+    <script type="text/javascript" src="/js/include.js"></script>
+</body>
+
+</html>

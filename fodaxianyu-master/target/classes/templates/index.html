@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html xmlns:c="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>二手交易网站</title>
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/jquery-3.3.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!--导入布局js，共享header和footer-->
+    <!--<script type="text/javascript" src="/js/include.js"></script>-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<script>
+    $(function () {
+        $.post("/user/findname",{},function (data) {
+            if(data.flag){
+                var msg="欢迎回来     "+data.data.name;
+                $("#span").html(msg);
+            }
+        })
+    })
+</script>
+<body>
+	<!--引入头部-->
+    <div class="top_banner" style="height: 400px">
+        <img src="/images/banner.jpg" alt="" width="1500px" height="400px">
+    </div>
+    <div class="shortcut">
+        <!-- 未登录状态  -->
+        <div class="login_out">
+            <a href="login.html">登录</a>
+            <a href="register.html">注册</a>
+            <a href="release.html">发布商品</a>
+        </div>
+        <!-- 登录状态  -->
+        <div class="login">
+
+            <span id="span"></span>
+            <a href="collection1.html" class="collection">我的收藏</a>
+            <a href="javascript:location.href='user/exit'">退出</a>
+        </div>
+    </div>
+    <div class="header_wrap">
+        <div class="topbar">
+            <div class="logo">
+                <a href="/"><img src="/images/logo.jpg" alt="" width="300px" height="130px" ></a>
+            </div>
+            <div class="search" style="margin-top: 40px;margin-left: 30px">
+                <input name="" type="text" placeholder="请输入商品名称" id="search_input" class="search_input" autocomplete="off">
+                <a href="javascript:;" id="search-button" class="search-button">搜索</a>
+            </div>
+            <div class="hottel" style="margin-top: 30px">
+                <div class="hot_pic">
+                    <img src="/images/hot_tel.jpg" alt="">
+                </div>
+                <div class="hot_tel">
+                    <p class="hot_time">客服热线(9:00-6:00)</p>
+                    <p class="hot_num">400-618-9090</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner start-->
+    <section id="banner">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="2000" style="width:80%;margin: auto">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="/images/ban.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img src="/images/ban4.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img src="/images/ban6.jpg" alt="">
+                </div>
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+        </div>
+    </section>
+    <!--<div class="navitem" style="width:80%;margin: auto">-->
+        <!--<ul class="nav">-->
+            <!--<li style="width: 120px"><a style="font-size: 20px">手机</a></li>-->
+            <!--<li style="width: 120px"><a style="font-size: 20px">电脑</a></li>-->
+            <!--<li style="width: 120px"><a style="font-size: 20px">服装</a></li>-->
+            <!--<li style="width: 120px"><a style="font-size: 20px">家电</a></li>-->
+            <!--<li style="width: 120px"><a style="font-size: 20px">衣服</a></li>-->
+            <!--<li style="width: 120px"><a style="font-size: 20px">鞋子</a></li>-->
+            <!--<li style="width: 120px"><a style="font-size: 20px">美妆</a></li>-->
+            <!--<li style="width: 120px"><a style="font-size: 20px">家电</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <nav class="navbar navbar-default" style="width:80%;margin: auto">
+        <div class="container" >
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">手机数码 <span class="caret"></span></a>
+
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">电脑办公<span class="caret"></span></a>
+
+                    </li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">家用电器<span class="caret"></span></a>
+
+                </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">美妆<span class="caret"></span></a>
+
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">食品生鲜<span class="caret"></span></a>
+
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">男生用品<span class="caret"></span></a>
+
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">女装<span class="caret"></span></a>
+
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">医疗用品<span class="caret"></span></a>
+
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">进口产品<span class="caret"></span></a>
+
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!-- banner end-->
+    <!-- 旅游 start-->
+    <section id="content">
+         <!-- 黑马精选start-->
+        <section class="hemai_jx">
+            <div class="jx_top">
+                <div class="jx_tit">
+                    <img src="/images/icon_5.jpg" alt="">
+                    <span style="font-size: 15px">猜你喜欢</span>
+                </div>
+                <div class="jx_tit" style="margin-left: 1000px">
+                    <img src="/images/icon_5.jpg" alt="">
+                    <!--<span style="font-size: 15px">换一批</span>-->
+                    <a href="#" style="font-size: 15px">换一批</a>
+                </div>
+            </div>
+            <div class="jx_content">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="popularity">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="goods_detail.html">
+                                    <img src="/images/aaa.jpg" alt="" style="height: 300px">
+                                    <div>
+                                        <h3>原装正品金士顿3.0u盘512g全新高速U盘128G金属优盘</h3>
+                                        <div class="price">32</strong></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="javascript:;">
+                                    <img src="/images/1.jpg" alt="" style="height: 300px">
+                                    <div class="has_border">
+                                        <h3>正品阿道夫800ml 阿道夫800ml正品洗发水沐浴露护发</h3>
+                                        <div class="price"><em>￥</em><strong>21.90</strong></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="javascript:;">
+                                    <img src="/images/2.jpg" alt="" style="height: 300px">
+                                    <div class="has_border">
+                                        <h3>电吹风吹风机家用网红款大功率宿舍用学生风筒发廊静音</h3>
+                                        <div class="price"><em>￥</em><strong>18.60</strong></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="javascript:;">
+                                    <img src="/images/3.jpg" alt="" style="height: 300px">
+                                    <div class="has_border">
+                                        <h3>honor20荣耀华为手机honor20荣耀华为手机honor20荣耀华为手机</h3>
+                                        <div class="price"><em>￥</em><strong>1899.00</strong></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane active" id="popularity">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="javascript:;">
+                                    <img src="/images/10.jpg" alt="" style="height: 300px">
+                                    <div class="has_border">
+                                        <h3>食用油 金龙鱼 健康100 非转基因食用食物调和油5L</h3>
+                                        <div class="price"><em>￥</em><strong>45.00</strong></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="javascript:;">
+                                    <img src="/images/4.jpg" alt="" style="height: 300px">
+                                    <div class="has_border">
+                                        <h3>阿玛尼 armani 红管豆沙色 番茄红405</h3>
+                                        <div class="price"><em>￥</em><strong>180.00</strong></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="javascript:;">
+                                    <img src="/images/11.jpg" alt="" style="height: 300px">
+                                    <div class="has_border">
+                                        <h3>雅思兰黛红石榴洗面奶125ml雅思兰黛红石榴洗面奶</h3>
+                                        <div class="price"><em>￥</em><strong>60.00</strong></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="javascript:;">
+                                    <img src="/images/5.jpg" alt="" style="height: 300px">
+                                    <div class="has_border">
+                                        <h3>真机械键盘青轴键盘正品无拆无修原装</h3>
+                                        <div class="price"><em>￥</em><strong>39.00</strong></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <nav aria-label="Page navigation" style="margin-left: 40%">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- 旅游 end-->
+   <!--导入底部-->
+
+    <div class="why_select" style="background-color: #0f0f0f">
+        <dl>
+            <dt class="fl">
+            <img src="/images/1.png" alt="">
+            </dt>
+        </dl>
+        <dl >
+            <dt class="fl" style="margin-left: 35px">
+                <img src="/images/2.png" alt="">
+            </dt>
+        </dl>
+        <dl >
+            <dt class="fl" style="margin-left: 35px">
+                <img src="/images/3.png" alt="">
+            </dt>
+        </dl>
+        <dl >
+            <dt class="fl" style="margin-left: 35px">
+                <img src="/images/4.png" alt="">
+            </dt>
+        </dl>
+    </div>
+    <div class="company">
+        <p>佛山科学计数学院 版权所有Copyright 2019-2020, All Rights Reserved 广东16007882</p>
+    </div>
+</body>
+</html>
